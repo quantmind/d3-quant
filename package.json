@@ -1,0 +1,38 @@
+{
+    "version": "0.1.0",
+    "name": "d3-quant",
+    "title": "d3-quant",
+    "description": "D3 library fron quantitative data analisys",
+    "homepage": "https://github.com/quantmind/d3-quant",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/quantmind/d3-quant.git"
+    },
+    "keywords": [
+        "d3",
+        "math"
+    ],
+    "license": "BSD-3-Clause",
+    "author": {
+        "name": "quantmind.com",
+        "email": "message@quantmind.com"
+    },
+    "main": "build/d3-quant.js",
+    "jsnext:main": "index",
+    "devDependencies": {
+        "faucet": "0.0",
+        "rollup": "0.25",
+        "rollup-plugin-babel": "",
+        "rollup-plugin-json": "",
+        "babel-preset-es2015-rollup": "",
+        "tape": "4",
+        "uglify-js": "2",
+        "eslint": ""
+    },
+    "scripts": {
+        "pretest": "mkdir -p build && node -e 'process.stdout.write(\"var version = \\\"\" + require(\"./package.json\").version + \"\\\"; export default version;\");' > src/version.js && rollup -c",
+        "test": "eslint index.js src test && faucet `find test -name '*-test.js'`",
+        "prepublish": "npm run test && uglifyjs build/d3-quant.js -c -m -o build/d3-quant.min.js && rm -f build/d3-quant.zip && zip -j build/d3-quant.zip -- LICENSE README.md build/d3-quant.js build/d3-quant.min.js",
+        "postpublish": "VERSION=`node -e 'console.log(require(\"./package.json\").version)'`; git push && git tag -am \"Release $VERSION.\" v${VERSION} && git push --tags && cp build/d3-quant.js"
+    }
+}
