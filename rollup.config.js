@@ -6,5 +6,8 @@ export default {
     "format": "umd",
     "moduleName": "d3_quant",
     plugins: [ json(), babel({"presets": ["es2015-rollup"]}) ],
-    dest: 'build/d3-quant.js'
+    dest: 'build/d3-quant.js',
+    globals: {
+        "d3-array": "d3_array"
+    }
 };

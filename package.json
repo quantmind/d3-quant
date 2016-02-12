@@ -1,5 +1,5 @@
 {
-    "version": "0.1.0",
+    "version": "0.1.1",
     "name": "d3-quant",
     "title": "d3-quant",
     "description": "D3 library fron quantitative data analisys",
@@ -19,6 +19,9 @@
     },
     "main": "build/d3-quant.js",
     "jsnext:main": "index",
+    "dependencies": {
+        "d3-array": ""
+    },
     "devDependencies": {
         "faucet": "0.0",
         "rollup": "0.25",
@@ -33,6 +36,6 @@
         "pretest": "mkdir -p build && node -e 'process.stdout.write(\"var version = \\\"\" + require(\"./package.json\").version + \"\\\"; export default version;\");' > src/version.js && rollup -c",
         "test": "eslint index.js src test && faucet `find test -name '*-test.js'`",
         "prepublish": "npm run test && uglifyjs build/d3-quant.js -c -m -o build/d3-quant.min.js && rm -f build/d3-quant.zip && zip -j build/d3-quant.zip -- LICENSE README.md build/d3-quant.js build/d3-quant.min.js",
-        "postpublish": "VERSION=`node -e 'console.log(require(\"./package.json\").version)'`; git push && git tag -am \"Release $VERSION.\" v${VERSION} && git push --tags && cp build/d3-quant.js"
+        "postpublish": "VERSION=`node -e 'console.log(require(\"./package.json\").version)'`; git push && git tag -am \"Release $VERSION.\" v${VERSION} && git push --tags"
     }
 }

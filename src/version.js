@@ -1,1 +1,1 @@
-var version = "0.1.0"; export default version;
+var version = "0.1.1"; export default version;

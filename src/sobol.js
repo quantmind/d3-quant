@@ -1,4 +1,6 @@
 'use strict';
+import {default as self} from './utils'
+
 const
     BITS = 52,
     SCALE = 2 << 51,
@@ -18,33 +20,24 @@ const
 class Sobol {
 
     constructor (dimension) {
-        _sobol.set(this, new SobolImpl(dimension));
+        self.set(this, new SobolImpl(dimension));
     }
 
     get dimension () {
-        return _sobol.get(this).dimension;
+        return self.get(this).dimension;
     }
 
     get count () {
-        return _sobol.get(this).count;
+        return self.get(this).count;
     }
 
     next () {
-        return _sobol.get(this).next();
+        return self.get(this).next();
     }
 }
 
 let i;
 
-// Simulate a WeekMap for now
-var _sobol = {
-    get: function (obj) {
-        return obj._self;
-    },
-    set: function (obj, value) {
-        obj._self = value;
-    }
-};
 
 class SobolImpl {
 
