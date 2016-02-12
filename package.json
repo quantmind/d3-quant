@@ -2,7 +2,7 @@
     "version": "0.1.1",
     "name": "d3-quant",
     "title": "d3-quant",
-    "description": "D3 library fron quantitative data analisys",
+    "description": "D3 library for quantitative analytics",
     "homepage": "https://github.com/quantmind/d3-quant",
     "repository": {
         "type": "git",

@@ -1,5 +1,7 @@
+'use strict';
 var tape = require("tape"),
     quant = require('../');
+//d3 = require('d3-array');
 
 
 tape('test kmeans constructor', function(test) {

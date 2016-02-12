@@ -69,8 +69,10 @@ class Kmeans {
             newCentroids,
             n, k;
 
-        if (!centroids)
+        if (!centroids) {
             centroids = this.randomCentroids(points, N);
+            this.centroids(centroids);
+        }
 
         let K = centroids.length,
             clusters = new Array(K);
@@ -84,7 +86,11 @@ class Kmeans {
 
             // Assignments
             for (k = 0; k < K; ++k)
-                clusters[k] = {centroid: centroids[k], points: [], indices: []};
+                clusters[k] = {
+                    centroid: centroids[k],
+                    points: [],
+                    indices: []
+                };
 
             for (n = 0; n < N; n++) {
                 k = this.classify(points[n]);
