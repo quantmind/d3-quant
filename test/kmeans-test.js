@@ -8,3 +8,11 @@ tape('test kmeans constructor', function(test) {
     test.ok(kmeans.distance());
     test.end();
 });
+
+tape('test euclidean distance', function(test) {
+    var kmeans = quant.kmeans(),
+        distance = kmeans.distance();
+    test.equal(typeof(distance), 'function');
+    test.equal(distance([1, 1], [1, 1]), 0);
+    test.end();
+});
