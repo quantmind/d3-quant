@@ -11,7 +11,8 @@ data analysis, quantitative finance and more.
 
 ## Installing
 
-If you use NPM, npm install d3-quant. Otherwise, download the
+If you use [NPM](https://www.npmjs.com/package/d3-quant),
+npm install d3-quant. Otherwise, download the
 [latest release](https://github.com/quantmind/d3-quant/releases/latest).
 The released bundle supports AMD, CommonJS, and vanilla environments.
 Create a custom build using [Rollup](https://github.com/rollup/rollup) or
