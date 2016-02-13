@@ -1,5 +1,8 @@
 # d3-quant
 
+[![Build Status](https://travis-ci.org/quantmind/d3-quant.svg?branch=master)](https://travis-ci.org/quantmind/d3-quant)
+[![Dependencies](https://david-dm.org/quantmind/d3-quant.svg)](https://david-dm.org/quantmind/d3-quant)
+
 **PRE ALPHA - DONT USE IT**
 
 This is a [d3 plugin](https://bost.ocks.org/mike/d3-plugin/) for quantitative
