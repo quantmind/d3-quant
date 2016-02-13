@@ -16,5 +16,6 @@ tape('test euclidean distance', function(test) {
         distance = kmeans.distance();
     test.equal(typeof(distance), 'function');
     test.equal(distance([1, 1], [1, 1]), 0);
+    test.equal(distance([1, 0], [0, 0]), 1);
     test.end();
 });

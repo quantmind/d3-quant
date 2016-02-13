@@ -1,7 +1,7 @@
 'use strict';
 
 // Simulate a WeekMap for now
-const self = {
+export const self = {
     get: function (obj) {
         return obj._self;
     },
@@ -10,4 +10,7 @@ const self = {
     }
 };
 
-export default self;
+
+export function round (x, n) {
+    return n ? Math.round(x * (n = Math.pow(10, n))) / n : Math.round(x);
+}

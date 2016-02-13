@@ -1,5 +1,5 @@
 'use strict';
-import {default as self} from './utils'
+import {self} from './utils'
 
 const
     BITS = 52,
