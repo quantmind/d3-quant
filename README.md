@@ -1,7 +1,8 @@
 # d3-quant
 
 [![Build Status](https://travis-ci.org/quantmind/d3-quant.svg?branch=master)](https://travis-ci.org/quantmind/d3-quant)
-[![Dependencies](https://david-dm.org/quantmind/d3-quant.svg)](https://david-dm.org/quantmind/d3-quant)
+[![Dependency Status](https://david-dm.org/quantmind/d3-quant.svg)](https://david-dm.org/quantmind/d3-quant)
+[![devDependency Status](https://david-dm.org/quantmind/d3-quant/dev-status.svg)](https://david-dm.org/quantmind/d3-quant#info=devDependencies)
 
 **PRE ALPHA - DONT USE IT**
 
