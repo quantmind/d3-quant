@@ -1,9 +1,10 @@
 'use strict';
-var tape = require("tape"),
-    quant = require('../');
+import {test} from 'tape';
+import {version} from '../';
 
 
-tape('quant version', function(test) {
-    test.ok(quant.version);
-    test.end();
+test('quant version', (t) => {
+    t.ok(version);
+    t.equal(typeof(version), 'string');
+    t.end();
 });

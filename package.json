@@ -1,5 +1,5 @@
 {
-    "version": "0.1.1",
+    "version": "0.1.2",
     "name": "d3-quant",
     "title": "d3-quant",
     "description": "D3 library for quantitative analytics",
@@ -23,18 +23,24 @@
         "d3-array": "0.7"
     },
     "devDependencies": {
-        "faucet": "0.0",
         "rollup": "0.25",
         "rollup-plugin-babel": "2.3",
         "babel-preset-es2015-rollup": "1.1",
-        "tape": "4.4",
         "uglify-js": "2.6",
-        "eslint": "2.0"
+        "eslint": "2.0",
+        "browserify": "13.0",
+        "babelify": "7.0",
+        "babel-tape-runner": "2.0",
+        "tape": "4.4",
+        "faucet": "0.0"
     },
     "scripts": {
         "pretest": "mkdir -p build && node -e 'process.stdout.write(\"var version = \\\"\" + require(\"./package.json\").version + \"\\\"; export default version;\");' > src/version.js && rollup -c",
-        "test": "eslint index.js src test && faucet `find test -name '*-test.js'`",
+        "test": "eslint index.js src test && babel-tape-runner `find test -name '*-test.js'` | faucet",
         "prepublish": "npm run test && uglifyjs build/d3-quant.js -c -m -o build/d3-quant.min.js && rm -f build/d3-quant.zip && zip -j build/d3-quant.zip -- LICENSE README.md build/d3-quant.js build/d3-quant.min.js",
         "postpublish": "VERSION=`node -e 'console.log(require(\"./package.json\").version)'`; git push && git tag -am \"Release $VERSION.\" v${VERSION} && git push --tags"
+    },
+    "babel": {
+        "presets": ["es2015"]
     }
 }

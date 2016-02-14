@@ -1,21 +1,20 @@
 'use strict';
-var tape = require("tape"),
-    quant = require('../');
-//d3 = require('d3-array');
+import {test} from 'tape';
+import {kmeans} from '../';
 
 
-tape('test kmeans constructor', function(test) {
-    var kmeans = quant.kmeans();
-    test.equal(kmeans.maxIters(), 300);
-    test.ok(kmeans.distance());
-    test.end();
+test('test kmeans constructor', (t) => {
+    var km = kmeans();
+    t.equal(km.maxIters(), 300);
+    t.ok(km.distance());
+    t.end();
 });
 
-tape('test euclidean distance', function(test) {
-    var kmeans = quant.kmeans(),
-        distance = kmeans.distance();
-    test.equal(typeof(distance), 'function');
-    test.equal(distance([1, 1], [1, 1]), 0);
-    test.equal(distance([1, 0], [0, 0]), 1);
-    test.end();
+test('test euclidean distance', (t) => {
+    var km = kmeans(),
+        distance = km.distance();
+    t.equal(typeof(distance), 'function');
+    t.equal(distance([1, 1], [1, 1]), 0);
+    t.equal(distance([1, 0], [0, 0]), 1);
+    t.end();
 });
