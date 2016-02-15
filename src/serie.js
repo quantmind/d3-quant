@@ -72,7 +72,7 @@ export class Serie {
 }
 
 
-export function serie () {
+export default function serie () {
     return new Serie();
 }
 

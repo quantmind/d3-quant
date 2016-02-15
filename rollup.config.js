@@ -1,3 +1,4 @@
+import json from 'rollup-plugin-json';
 import babel from 'rollup-plugin-babel';
 
 export default {
@@ -5,6 +6,7 @@ export default {
     format: 'umd',
     moduleName: 'd3_quant',
     plugins: [
+        json(),
         babel({
             babelrc: false,
             presets: ['es2015-rollup']
