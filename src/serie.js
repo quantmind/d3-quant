@@ -1,12 +1,25 @@
 'use strict';
-import {self} from './utils'
+import {self, assert, isArray} from './utils'
+
+
+var default_x = indexValue(0);
+var default_y = indexValue(1);
 
 
 export class Serie {
 
-    constructor () {
-        self.set(this, {});
+    constructor (mode) {
+        self.set(this, {mode: mode || 'xy'});
         this.x(default_x).y(default_y);
+    }
+
+    get length () {
+        var data = this.data();
+        return data ? data.length : 0;
+    }
+
+    get mode () {
+        return self.get(this).mode;
     }
 
     x (_) {
@@ -72,17 +85,51 @@ export class Serie {
 }
 
 
-export default function serie () {
+export class MultiSerie extends Serie {
+
+    fields (_) {
+        if (arguments.length === 0) return self.get(this).fields;
+        assert(isArray(_), "fields must be an array");
+        self.get(this).fields = _;
+        return this;
+    }
+
+    /**
+     * Return a x,y serie from this multiSerie
+     * @param x
+     * @param y
+     * @returns {*}
+     */
+    serie (x, y) {
+        var s = serie(this.mode);
+        if (arguments.length === 1)
+            s.x(this.x()).y(indexValue(x));
+        else
+            s.x(indexValue(y)).y(indexValue(y));
+
+        return s.data(this);
+    }
+}
+
+
+function serie () {
     return new Serie();
 }
 
-function default_x (d) {
-    return d.x;
+export function multiSerie () {
+    return new MultiSerie();
 }
 
-function default_y (d) {
-    return d.y;
+
+export default serie;
+
+
+export function indexValue (idx) {
+    return function (d) {
+        return d[idx];
+    };
 }
+
 
 function getRange (data, get) {
     return data.reduce((prev, current) => {

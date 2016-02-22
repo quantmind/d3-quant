@@ -1,0 +1,42 @@
+{
+    "shell": {
+        "build": {
+            "command": [
+                "npm test",
+                "./node_modules/.bin/uglifyjs ./build/d3-quant.js -c -m -o ./build/d3-quant.min.js"
+            ]
+        },
+        "zip": {
+            "command": [
+                "zip -j build/d3-quant.zip -- LICENSE README.md build/*.js"
+            ]
+        },
+        "clean": {
+            "command": ["rm -rf build"]
+        }
+    },
+    "s3": {
+        "options": {
+            "bucket": "quantmind-public"
+        },
+        "d3-quant": {
+            "files": {
+                "build/*.js": "d3-quant/{{ package.version }}/"
+            }
+        }
+    },
+    "tasks": {
+        "clean": {
+            "description": "Remove build files and directories",
+            "command": ["shell:clean"]
+        },
+        "build": {
+            "description": "Run tests and create the build/d3-quant.js files",
+            "command": ["shell:build"]
+        },
+        "release": {
+            "description": "Make a new release",
+            "command": ["build", "shell:zip", "s3:d3-quant"]
+        }
+    }
+}

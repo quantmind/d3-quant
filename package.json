@@ -1,5 +1,5 @@
 {
-    "version": "0.1.3",
+    "version": "0.1.4",
     "name": "d3-quant",
     "title": "d3-quant",
     "description": "D3 library for quantitative analytics",
@@ -20,7 +20,8 @@
     "main": "build/d3-quant.js",
     "jsnext:main": "index",
     "dependencies": {
-        "d3-array": "0.7"
+        "d3-array": "0.7",
+        "d3-random": "0.2.1"
     },
     "devDependencies": {
         "rollup": "0.25",

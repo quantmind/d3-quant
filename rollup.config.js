@@ -14,6 +14,7 @@ export default {
     ],
     dest: 'build/d3-quant.js',
     globals: {
-        'd3-array': 'd3_array'
+        'd3-array': 'd3_array',
+        'd3-random': 'd3_random'
     }
 };

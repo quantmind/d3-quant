@@ -1,8 +1,9 @@
 *
 !.eslintrc
-!build
+!build/*.js
 !index.js
 !LICENSE
 !package.json
 !README.md
-!src
+!rollup.config.js
+!src/*.js
