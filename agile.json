@@ -1,5 +1,10 @@
 {
     "shell": {
+        "test": {
+            "command": [
+                "npm test"
+            ]
+        },
         "build": {
             "command": [
                 "npm test",
@@ -25,10 +30,24 @@
             }
         }
     },
+    "watch": {
+        "d3-quant": {
+            "files": [
+                "src/**/*.js",
+                "test/*.js",
+                "index.js"
+            ],
+            "command": "test"
+        }
+    },
     "tasks": {
         "clean": {
             "description": "Remove build files and directories",
             "command": ["shell:clean"]
+        },
+        "test": {
+            "description": "Eslint, rollup and test",
+            "command": ["shell:test"]
         },
         "build": {
             "description": "Run tests and create the build/d3-quant.js files",
@@ -37,6 +56,10 @@
         "release": {
             "description": "Make a new release",
             "command": ["build", "shell:zip", "s3:d3-quant"]
+        },
+        "serve": {
+            "description": "Starts development server",
+            "command": ["watch"]
         }
     }
 }
