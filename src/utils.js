@@ -80,6 +80,9 @@ export function isDate (value) {
     return ostring.call(value) === '[object Date]';
 }
 
+export function isNumber (value) {
+    return ostring.call(value) === '[object Number]';
+}
 
 export function forEach (obj, callback) {
     if (!obj) return;
