@@ -39,3 +39,11 @@ test('test Pi approximation', (t) => {
     t.equal(pi, target);
     t.end();
 });
+
+
+test('test draws', (t) => {
+    var so = sobol(2),
+        draws = so.generate(1000);
+    t.equal(draws.length, 1000);
+    t.end();
+});

@@ -34,6 +34,12 @@ class Sobol {
     next () {
         return self.get(this).next();
     }
+
+    generate (num) {
+        var draws = [];
+        for (let i=0; i<num; ++i) draws.push(this.next());
+        return draws;
+    }
 }
 
 let i;
