@@ -23,21 +23,25 @@ test('test crossfilterSerie.dimension', (t) => {
     t.equal(s.crossfilter(), b.crossfilter());
     t.ok(b.dimension());
     t.ok(isFunction(b.dimension().filter));
-    t.notOk(b.data());
+    t.ok(b.data());
+    t.equal(b.length, s.crossfilter().size());
     t.end();
 });
 
 
-test('test crossfilterSerie', (t) => {
+test('test crossfilterSerie.filter', (t) => {
     var s = crossfilterSerie(fixture);
     t.ok(s.crossfilter());
     var b = s.dimension(function (d) {
         return d.type;
     });
-    var serie = b.filter('type');
-    t.equal(serie.crossfilter(), b.crossfilter());
-    t.equal(serie.dimension(), b.dimension());
-    t.ok(serie.data());
+    var data1 = b.data();
+    var serie = b.filter('cash');
+    t.equal(serie, b);
+    var data2 = serie.data();
+    t.ok(data2);
+    t.ok(data2.length < data1.length);
+    t.equal(data2.length, serie.length);
     t.end();
 });
 

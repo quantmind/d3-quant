@@ -27,17 +27,30 @@ export class CrossfilterSerie extends Serie {
         if (arguments.length === 0) return o.dimension;
         var cf = this.crossfilter();
         if (!cf) throw Error('crossfilter not available');
-        return this.copy({dimension: cf.dimension(f)});
+        return crossfilterSerie({
+            name: this.name,
+            crossfilter: cf,
+            dimension: cf.dimension(f)
+        });
     }
 
     /**
-     * Create a new serie fro this crossfilter dimension
+     * Apply a new filter to this crossfilter dimension
+     *
+     * A dimension must be available
+     *
      * @param f
      */
     filter (f) {
         var dim = this.dimension();
         if (!dim) throw Error('dimension not available');
-        return this.copy().data(dim.filter(f));
+        dim.filter(f);
+        return this;
+    }
+
+    data () {
+        var dim = this.dimension();
+        return dim ? dim.top(Infinity) : undefined;
     }
 }
 
