@@ -33,7 +33,7 @@
     "watch": {
         "d3-quant": {
             "files": [
-                "src/**/*.js",
+                "src/*.js",
                 "test/*.js",
                 "index.js"
             ],
