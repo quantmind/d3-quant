@@ -1,4 +1,3 @@
-'use strict';
 import {self} from './utils'
 import * as distances from './distances'
 import {mean} from 'd3-array';

@@ -35,7 +35,7 @@ export function extend () {
 
     while (++index < length) {
         obj = arguments[index];
-        if (isObject(obj)) {
+        if (isObject(obj) && obj !== object) {
             for (var prop in obj) {
                 if (obj.hasOwnProperty(prop)) {
                     if (deep) {

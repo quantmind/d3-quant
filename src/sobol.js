@@ -1,4 +1,3 @@
-'use strict';
 import {self} from './utils'
 
 const

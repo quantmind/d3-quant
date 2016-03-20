@@ -1,5 +1,3 @@
-'use strict';
-
 
 export function euclidean (v1, v2) {
     var total = 0;
