@@ -64,5 +64,9 @@ test('test crossfilter integer', (t) => {
     // Apply filter
     t.equal(s, s.filter(2013));
     t.equal(s.data().length, fixture2.length/2);
+
+    var range = s.range('debt');
+    t.equal(range.length, 2);
+
     t.end();
 });

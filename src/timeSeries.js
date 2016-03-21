@@ -1,10 +1,10 @@
 import {range} from 'd3-array';
 import {randomNormal} from 'd3-random';
-import {MultiSerie} from './serie';
-import {extend, assert} from './utils';
+import {Serie} from './serie';
+import {extend, assert, mapFields} from './utils';
 
 
-export class TimeSeries extends MultiSerie {
+export class TimeSeries extends Serie {
     /**
      * Get a serie from a field
      * @param field
@@ -12,10 +12,6 @@ export class TimeSeries extends MultiSerie {
      */
     get mode () {
         return 'time'
-    }
-
-    serie (field) {
-        return super.serie(field);
     }
 }
 
@@ -48,7 +44,7 @@ timeSeries.randomPath = function (options) {
         data[i] = [i, data[i - 1][1] + dx];
     }
 
-    return timeSeries().data(data).fields(options.fields);
+    return timeSeries().data(mapFields(options.fields, data));
 };
 
 

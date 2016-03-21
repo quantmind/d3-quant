@@ -2,6 +2,9 @@ import {Serie, indexValue} from './serie';
 import {isArray, isFunction, isString, extend, self} from './utils';
 
 
+/**
+ * A serie build on a crossfilter dimension
+ */
 export class CrossfilterSerie extends Serie {
 
     constructor (opts) {
