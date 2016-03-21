@@ -5,5 +5,5 @@ export {default as crossfilterSerie} from './src/crossfilter';
 export {default as timeSeries} from './src/timeSeries';
 //export {default as poisson} from './src/poisson';
 export {round, self, extend, isArray, isObject, isFunction,
-        isString, isDate, isNumber, forEach} from './src/utils';
+        isString, isDate, isNumber, forEach, mapFields} from './src/utils';
 export {version} from './package.json';

@@ -93,6 +93,15 @@ export function forEach (obj, callback) {
     }
 }
 
+export function mapFields(fields, data) {
+    return data.map((cross) => {
+        return cross.reduce((o, value, i) => {
+            o[fields[i]] = value;
+            return o;
+        }, {});
+    });
+}
+
 
 export function assert(condition, message) {
     if (!condition) {

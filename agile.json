@@ -1,4 +1,11 @@
 {
+    "github": {
+        "d3-quant": {
+            "version": "{{ package.version }}",
+            "release_notes": "docs/history",
+            "dist": ["publish", "s3:d3-quant"]
+        }
+    },
     "shell": {
         "test": {
             "command": [
@@ -55,7 +62,7 @@
         },
         "release": {
             "description": "Make a new release",
-            "command": ["build", "shell:zip", "s3:d3-quant"]
+            "command": ["build", "shell:zip"]
         },
         "serve": {
             "description": "Starts development server",
