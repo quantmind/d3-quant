@@ -1,5 +1,5 @@
-import {Serie} from './serie';
-import {isArray, isFunction, self} from './utils';
+import {Serie, indexValue} from './serie';
+import {isArray, isFunction, isString, extend, self} from './utils';
 
 
 export class CrossfilterSerie extends Serie {
@@ -19,19 +19,22 @@ export class CrossfilterSerie extends Serie {
         if (_ && !isFunction(_.dimension))
             _ = crossfilterSerie.crossfilter(_);
         o.crossfilter = _;
+        o.dimension = null;
         return this;
     }
 
-    dimension (f) {
-        var o = self.get(this);
-        if (arguments.length === 0) return o.dimension;
+    /**
+     * Crate a new crossfilter dimension and return a new serie
+     *
+     * @param f
+     * @returns {CrossfilterSerie.dimension|*|dimension|o|null}
+     */
+    dimension (f, opts) {
+        if (arguments.length === 0) return self.get(this).dimension;
         var cf = this.crossfilter();
         if (!cf) throw Error('crossfilter not available');
-        return crossfilterSerie({
-            name: this.name,
-            crossfilter: cf,
-            dimension: cf.dimension(f)
-        });
+        if (isString(f)) f = indexValue(f);
+        return crossfilterSerie(this, extend({dimension: cf.dimension(f)}, opts));
     }
 
     /**
@@ -49,6 +52,7 @@ export class CrossfilterSerie extends Serie {
     }
 
     data () {
+        if (arguments.length > 0) return this;
         var dim = this.dimension();
         return dim ? dim.top(Infinity) : undefined;
     }
@@ -57,6 +61,9 @@ export class CrossfilterSerie extends Serie {
 
 function crossfilterSerie (data, opts) {
     if (!crossfilterSerie.crossfilter) throw Error('crossfilterSerie requires crossfilter');
+    if (data instanceof crossfilterSerie)
+        return data.serie(opts, CrossfilterSerie);
+
     if (arguments.length === 1 && !isArray(data))
         return new CrossfilterSerie(data);
     else

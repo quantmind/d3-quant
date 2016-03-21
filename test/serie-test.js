@@ -1,5 +1,6 @@
 import {test} from 'tape';
 import {serie} from '../';
+import fixture from './fixture';
 
 
 test('test Serie constructor', (t) => {
@@ -32,6 +33,15 @@ test('test Serie.yrange()', (t) => {
     var yrange = s.yrange();
     t.equal(yrange[0], -8);
     t.equal(yrange[1], 10);
+    t.end();
+});
+
+test('test serie.serie', (t) => {
+    var s = serie(fixture);
+    t.ok(s.data());
+    var s2 = s.serie();
+    t.notEqual(s, s2);
+    t.equal(s.data(), s2.data());
     t.end();
 });
 

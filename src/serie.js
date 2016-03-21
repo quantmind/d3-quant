@@ -85,9 +85,16 @@ export class Serie {
         return this;
     }
 
-    copy (opts) {
+    /**
+     * Create a new serie from this serie data
+     *
+     * @param opts
+     * @returns {*}
+     */
+    serie (opts, Constructor) {
         (opts || (opts = {}));
-        var serie = new this.__proto__.constructor(extend({}, self.get(this), opts));
+        if (!Constructor) Constructor = Serie;
+        var serie = new Constructor(extend({}, self.get(this), opts));
         return serie
                     .x(opts.x || this.x())
                     .y(opts.y || this.y())
