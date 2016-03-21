@@ -1,4 +1,4 @@
-import {self, extend, isArray, isFunction} from './utils'
+import {self, extend, isArray, isFunction, forEach} from './utils'
 import * as d3 from 'd3-array';
 
 
@@ -15,6 +15,17 @@ export class Serie {
     get length() {
         var data = this.data();
         return data ? data.length : 0;
+    }
+
+    get fields () {
+        var data = this.top(1);
+        if (data) {
+            var keys = [];
+            forEach(data[0], (v, key) => {
+                keys.push(key);
+            })
+            return keys;
+        }
     }
 
     get mode() {
@@ -34,6 +45,11 @@ export class Serie {
         if (arguments.length === 0) return self.get(this).data;
         self.get(this).data = _;
         return this;
+    }
+
+    top (number) {
+        var data = this.data();
+        if (data) return data.slice(0, number);
     }
 
     /**

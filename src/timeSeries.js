@@ -49,7 +49,7 @@ timeSeries.randomPath = function (options) {
 
 
 timeSeries.randomPath.defaults = {
-    fields: ['time', 'X'],
+    fields: ['x', 'y'],
     size: 300,
     sigma: 0.1,
     drift: 0

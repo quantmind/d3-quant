@@ -30,6 +30,13 @@ test('test serie.serie', (t) => {
     var s2 = s.serie();
     t.notEqual(s, s2);
     t.equal(s.data(), s2.data());
+    var fields = s.fields;
+    t.equal(fields.length, 5);
+    t.ok(fields.indexOf('date') > -1);
+    t.ok(fields.indexOf('quantity') > -1);
+    t.ok(fields.indexOf('total') > -1);
+    t.ok(fields.indexOf('tip') > -1);
+    t.ok(fields.indexOf('type') > -1);
     t.end();
 });
 
