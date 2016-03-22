@@ -29,7 +29,7 @@ Try [d3-quant](https://tonicdev.com/npm/d3-quant) in your browser.
 
 * [Series]
 * [Random Numbers]
-* [Periods
+* [Periods]
 
 
 ### Series
@@ -57,7 +57,7 @@ Return true if ``field`` is available in the serie.
 
 <a name="serie_range" href="#serie_range">#</a> <i>serie</i>.<b>range</b>([<i>field</i>])
 
-Return the extent of ``field``, In the event the field does not exists or the serie is empty
+Return the extent of ``field``. In the event the field does not exist or the serie is empty
 ``[undefined, undefined]`` is returned.
 
 
