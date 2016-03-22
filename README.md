@@ -68,6 +68,7 @@ p.years;        // 5
 p.months;       // 2
 p.weeks;        // 1
 p.days;         // 2
+```
 
 [Series]: #series
 [Random Numbers]: #random-numbers
