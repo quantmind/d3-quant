@@ -29,6 +29,7 @@ Try [d3-quant](https://tonicdev.com/npm/d3-quant) in your browser.
 
 * [Series]
 * [Random Numbers]
+* [Periods
 
 
 ### Series
@@ -51,5 +52,24 @@ s.range('date');        // [ Tue Mar 01 2016 ..., Thu Mar 03 2016 ... ]
 Two random number generators for multiple dimension
 
 
+### Periods
+
+Manipulate periods:
+```javascript
+var p = d3.period('5y');
+p.years;        // 5
+p.months;       // 0
+var p = d3.period('5y2m');
+p.years;        // 5
+p.months;       // 2
+p.days;         // 0
+var p = d3.period('5y2m9d');
+p.years;        // 5
+p.months;       // 2
+p.weeks;        // 1
+p.days;         // 2
+
 [Series]: #series
 [Random Numbers]: #random-numbers
+[Periods]: #periods
+
