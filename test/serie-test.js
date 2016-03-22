@@ -53,6 +53,31 @@ test('test timeField', (t) => {
     t.end();
 });
 
+test('hasField', (t) => {
+    var s = serie();
+    t.notOk(s.hasField('x'));
+
+    s = serie([
+        {x: '2016-03-01', y: 300},
+        {x: '2016-03-02', y: 400},
+        {x: '2016-03-03', y: 350}]);
+    t.ok(s.hasField('x'));
+    t.ok(s.hasField('y'));
+    t.notOk(s.hasField('z'));
+    t.end();
+});
+
+test('empty range', (t) => {
+    var s = serie(),
+        u = [undefined, undefined];
+    t.deepEqual(s.range('foo'), u);
+    s = serie([
+        {x: '2016-03-01', y: 300},
+        {x: '2016-03-02', y: 400},
+        {x: '2016-03-03', y: 350}]);
+    t.deepEqual(s.range('foo'), u);
+    t.end();
+});
 
 function simple (d) {
     return d;

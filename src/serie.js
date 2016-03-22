@@ -36,9 +36,17 @@ export class Serie {
         return self.get(this).name;
     }
 
+    hasField (field) {
+        var data = this.top(1);
+        return data && data.length ? data[0].hasOwnProperty(field) : false;
+    }
+
+
     range(field) {
+        var data = this.data();
+        if (!data) return [undefined, undefined];
         if (!isFunction(field)) field = indexValue(field);
-        return d3.extent(this.data(), field);
+        return d3.extent(data, field);
     }
 
     data(_) {

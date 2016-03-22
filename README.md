@@ -47,6 +47,21 @@ s.range('price');       // [300, 400]
 s.range('date');        // [ Tue Mar 01 2016 ..., Thu Mar 03 2016 ... ]
 ```
 
+<a name="serie_fields" href="#serie_fields">#</a> <i>serie</i>.<b>fields</b>
+
+Array of all fields available in the serie.
+
+<a name="serie_hasField" href="#serie_hasField">#</a> <i>serie</i>.<b>hasField</b>([<i>field</i>])
+
+Return true if ``field`` is available in the serie.
+
+<a name="serie_range" href="#serie_range">#</a> <i>serie</i>.<b>range</b>([<i>field</i>])
+
+Return the extent of ``field``, In the event the field does not exists or the serie is empty
+``[undefined, undefined]`` is returned.
+
+
+
 ### Random Numbers
 
 Two random number generators for multiple dimension
