@@ -38,7 +38,12 @@ The serie object is a wrapper around a data array:
 var s = d3.serie([
         {date: '2016-03-01', price: 300},
         {date: '2016-03-02', price: 400},
-        {date: '2016-03-03', price: 350}]);
+        {date: '2016-03-03', price: 350}]).timeField('date');
+
+s.length;               // 3
+s.fields;               // ['date', 'price']
+s.range('price');       // [300, 400]
+s.range('date');        // [ Tue Mar 01 2016 ..., Thu Mar 03 2016 ... ]
 ```
 
 ### Random Numbers
