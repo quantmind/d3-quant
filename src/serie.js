@@ -65,6 +65,20 @@ export class Serie {
         return s.data(this.data());
     }
 
+    /**
+     * Convert a field into Date values
+     * @param field
+     */
+    timeField (field) {
+        var data = this.data();
+        if (!data) return;
+        var d;
+        data.forEach((cross) => {
+            d = cross[field];
+            if (!(d instanceof Date)) cross[field] = new Date(d);
+        });
+        return this;
+    }
 }
 
 

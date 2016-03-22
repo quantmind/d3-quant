@@ -24,3 +24,27 @@ You can also load directly from https://assets.quantmind.com:
 ```
 In a vanilla environment, a ``d3_quant`` global is exported.
 Try [d3-quant](https://tonicdev.com/npm/d3-quant) in your browser.
+
+## API Reference
+
+* [Series]
+* [Random Numbers]
+
+
+### Series
+
+The serie object is a wrapper around a data array:
+```javascript
+var s = d3.serie([
+        {date: '2016-03-01', price: 300},
+        {date: '2016-03-02', price: 400},
+        {date: '2016-03-03', price: 350}]);
+```
+
+### Random Numbers
+
+Two random number generators for multiple dimension
+
+
+[Series]: #series
+[Random Numbers]: #random-numbers

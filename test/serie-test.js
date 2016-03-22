@@ -40,6 +40,19 @@ test('test serie.serie', (t) => {
     t.end();
 });
 
+test('test timeField', (t) => {
+    var s = serie([
+        {x: '2016-03-01', y: 300},
+        {x: '2016-03-02', y: 400},
+        {x: '2016-03-03', y: 350}]);
+    t.equal(s.length, 3);
+    t.equal(s.timeField('x'), s);
+    var r = s.range('x');
+    t.deepEqual(r[0], new Date('2016-03-01'));
+    t.deepEqual(r[1], new Date('2016-03-03'));
+    t.end();
+});
+
 
 function simple (d) {
     return d;
