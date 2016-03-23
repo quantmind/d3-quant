@@ -79,6 +79,20 @@ test('empty range', (t) => {
     t.end();
 });
 
+test('test serie.column', (t) => {
+    var s = serie(fixture),
+        c = s.column('total');
+    t.equal(s.length, c.length);
+    s.each((cross, i) => {
+        t.equal(cross['total'], c[i]);
+    });
+    c = s.column(function (d) {
+        return d['total']*d['quantity'];
+    });
+    t.equal(s.length, c.length);
+    t.end();
+});
+
 function simple (d) {
     return d;
 }

@@ -47,6 +47,17 @@ s.range('price');       // [300, 400]
 s.range('date');        // [ Tue Mar 01 2016 ..., Thu Mar 03 2016 ... ]
 ```
 
+<a name="serie_column" href="#serie_column">#</a> <i>serie</i>.<b>column</b>([<i>field</i>])
+
+Extract a column array from the serie. The ``field`` parameter can be either a field name or
+an accessor function.
+```
+s.column('price')       // [300, 400, 350]
+s.column(function (d) {
+    return 2*d['price'];
+});                     // [600, 800, 700]
+```
+
 <a name="serie_fields" href="#serie_fields">#</a> <i>serie</i>.<b>fields</b>
 
 Array of all fields available in the serie.

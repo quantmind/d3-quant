@@ -102,6 +102,12 @@ export function mapFields(fields, data) {
     });
 }
 
+export function zip(keys, values) {
+    return keys.reduce((o, key, i) => {
+        o[key] = values[i];
+    }, {});
+}
+
 
 export function assert(condition, message) {
     if (!condition) {

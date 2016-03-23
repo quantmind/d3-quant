@@ -60,6 +60,29 @@ export class Serie {
         if (data) return data.slice(0, number);
     }
 
+    each (f) {
+        var self = this,
+            data = this.data();
+        if (data) data.forEach((d, i) => {
+            f(d, i, self);
+        });
+        return this;
+    }
+
+    /** extract an array from a given field
+     *
+     * The field can be an accessor function or a field name
+     * @param field
+     */
+    column (field) {
+        var data = this.data();
+        if (!data) return;
+        if (!isFunction(field)) field = indexValue(field);
+        return data.map((d) => {
+            return field(d);
+        });
+    }
+
     /**
      * Create a new serie from this serie data
      *

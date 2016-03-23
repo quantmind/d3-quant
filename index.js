@@ -7,5 +7,5 @@ export {default as orderedMap} from './src/map';
 export {default as period} from './src/period';
 //export {default as poisson} from './src/poisson';
 export {round, self, extend, isArray, isObject, isFunction,
-        isString, isDate, isNumber, forEach, mapFields} from './src/utils';
+        isString, isDate, isNumber, forEach, mapFields, zip} from './src/utils';
 export {version} from './package.json';
