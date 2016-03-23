@@ -96,6 +96,12 @@ export class Serie {
         return s.data(this.data());
     }
 
+    labels (_) {
+        if (arguments.length === 0) return self.get(this).labels;
+        self.get(this).labels = _;
+        return this;
+    }
+
     /**
      * Convert a field into Date values
      * @param field

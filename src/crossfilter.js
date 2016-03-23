@@ -54,6 +54,13 @@ export class CrossfilterSerie extends Serie {
         return this;
     }
 
+    group (f) {
+        var dim = this.dimension();
+        if (!dim) throw Error('dimension not available');
+        if (f && !isFunction(f)) f = indexValue(f);
+        return dim.group(f);
+    }
+
     data () {
         if (arguments.length > 0) return this;
         var dim = this.dimension();
