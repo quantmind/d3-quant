@@ -8,6 +8,7 @@ export default {
     plugins: [
         json(),
         babel({
+            include: 
             babelrc: false,
             presets: ['es2015-rollup']
         })
