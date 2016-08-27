@@ -1,7 +1,8 @@
 import {range} from 'd3-array';
 import {randomNormal} from 'd3-random';
+import {extend} from 'd3-let';
 import {Serie} from './serie';
-import {extend, assert, mapFields} from './utils';
+import {assert, mapFields} from './utils';
 
 
 export class TimeSeries extends Serie {

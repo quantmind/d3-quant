@@ -1,4 +1,4 @@
-from agile import AgileManager
+from agile.app import AgileManager
 
 
 if __name__ == '__main__':

@@ -1,5 +1,6 @@
 import {Serie, indexValue} from './serie';
-import {isArray, isFunction, isString, extend, self} from './utils';
+import {self} from './utils';
+import {isArray, isFunction, isString, extend} from 'd3-let';
 
 
 /**

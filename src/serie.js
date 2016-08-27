@@ -1,4 +1,5 @@
-import {self, extend, isArray, isFunction, forEach} from './utils'
+import {self, forEach} from './utils'
+import {extend, isArray, isFunction} from 'd3-let';
 import * as d3 from 'd3-array';
 
 

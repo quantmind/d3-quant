@@ -1,9 +1,8 @@
-*
-!.eslintrc
-!build/*.js
-!index.js
-!LICENSE
-!package.json
-!README.md
-!rollup.config.js
-!src/*.js
+.idea
+.travis.yml
+*.log
+agile.json
+play.py
+coverage/
+dist/*.zip
+test/

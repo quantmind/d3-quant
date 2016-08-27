@@ -1,6 +1,7 @@
 import {test} from 'tape';
-import {crossfilterSerie, isFunction, mapFields} from '../';
+import {crossfilterSerie, mapFields} from '../';
 import {default as crossfilter} from 'crossfilter';
+import {isFunction} from 'd3-let';
 import fixture from './fixture';
 import fixture2 from './fixture2';
 
