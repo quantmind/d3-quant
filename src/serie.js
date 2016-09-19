@@ -1,6 +1,7 @@
-import {self, forEach} from './utils'
-import {extend, isArray, isFunction} from 'd3-let';
-import * as d3 from 'd3-array';
+import {assign, isArray, isFunction} from 'd3-let';
+import {extent} from 'd3-array';
+
+import {self, forEach} from './utils';
 
 
 export class Serie {
@@ -24,7 +25,7 @@ export class Serie {
             var keys = [];
             forEach(data[0], (v, key) => {
                 keys.push(key);
-            })
+            });
             return keys;
         }
     }
@@ -47,7 +48,7 @@ export class Serie {
         var data = this.data();
         if (!data) return [undefined, undefined];
         if (!isFunction(field)) field = indexValue(field);
-        return d3.extent(data, field);
+        return extent(data, field);
     }
 
     data(_) {
@@ -93,7 +94,7 @@ export class Serie {
     serie(opts, Constructor) {
         (opts || (opts = {}));
         if (!Constructor) Constructor = Serie;
-        var s = new Constructor(extend({}, self.get(this), opts));
+        var s = new Constructor(assign({}, self.get(this), opts));
         return s.data(this.data());
     }
 

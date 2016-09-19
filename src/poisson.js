@@ -38,7 +38,7 @@ export default function (width, height, radius) {
             queue[i] = queue[--queueSize];
             queue.length = queueSize;
         }
-    }
+    };
 
     function far(x, y) {
         var i = x / cellSize | 0,

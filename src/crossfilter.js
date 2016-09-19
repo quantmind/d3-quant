@@ -1,6 +1,6 @@
 import {Serie, indexValue} from './serie';
 import {self} from './utils';
-import {isArray, isFunction, isString, extend} from 'd3-let';
+import {isArray, isFunction, isString, assign} from 'd3-let';
 
 
 /**
@@ -38,7 +38,7 @@ export class CrossfilterSerie extends Serie {
         var cf = this.crossfilter();
         if (!cf) throw Error('crossfilter not available');
         if (isString(f)) f = indexValue(f);
-        return crossfilterSerie(this, extend({dimension: cf.dimension(f)}, opts));
+        return crossfilterSerie(this, assign({dimension: cf.dimension(f)}, opts));
     }
 
     /**

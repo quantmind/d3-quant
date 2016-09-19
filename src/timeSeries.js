@@ -1,6 +1,7 @@
 import {range} from 'd3-array';
 import {randomNormal} from 'd3-random';
-import {extend} from 'd3-let';
+import {assign} from 'd3-let';
+
 import {Serie} from './serie';
 import {assert, mapFields} from './utils';
 
@@ -12,7 +13,7 @@ export class TimeSeries extends Serie {
      * @returns {*}
      */
     get mode () {
-        return 'time'
+        return 'time';
     }
 }
 
@@ -31,8 +32,8 @@ export default timeSeries;
  * @param options
  */
 timeSeries.randomPath = function (options) {
-    options = extend({}, timeSeries.randomPath.defaults, options);
-    assert(options.fields.length > 0, "There must be two or more fields")
+    options = assign({}, timeSeries.randomPath.defaults, options);
+    assert(options.fields.length > 0, "There must be two or more fields");
     var t = range(0, options.size, 1),
         S = options.sigma,
         drift = options.drift,

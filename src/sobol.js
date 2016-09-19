@@ -1,4 +1,4 @@
-import {self} from './utils'
+import {self} from './utils';
 
 const
     BITS = 52,
@@ -48,7 +48,7 @@ class SobolImpl {
 
     constructor(dimension) {
         if (dimension < 1 || dimension > COEFFICIENTS.length) throw new Error("Out of range dimension");
-        this.dimension = dimension
+        this.dimension = dimension;
         this.count = 0;
         this.direction = [];
         this.x = [];

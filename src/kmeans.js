@@ -1,6 +1,7 @@
-import {self} from './utils'
-import * as distances from './distances'
 import {mean} from 'd3-array';
+
+import {self} from './utils';
+import * as distances from './distances';
 
 
 //  K-means clustering

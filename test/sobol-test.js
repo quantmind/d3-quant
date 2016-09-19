@@ -33,7 +33,7 @@ test('test Pi approximation', (t) => {
         if (x*x + y*y <= 1) circle += 1;
         pi = round(4*circle/n, precision);
         if (pi === target)
-            break
+            break;
     }
     t.equal(pi, target);
     t.end();

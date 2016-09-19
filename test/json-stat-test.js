@@ -1,6 +1,8 @@
-import {test} from 'tape';
-import * as quant from '../';
 import fs from 'fs';
+import {test} from 'tape';
+
+import {jsonStat} from '../';
+
 
 var jdata = JSON.parse(fs.readFileSync('test/demo_pjangroup.json'));
 
@@ -11,7 +13,7 @@ test('test json data', (t) => {
 
 
 test('test parse data', (t) => {
-    var serie = quant.jsonStat(jdata);
+    var serie = jsonStat(jdata);
     t.ok(serie.length);
     t.equal(serie.fields.length, 3);
     t.ok(serie.hasField('age'));
@@ -22,7 +24,7 @@ test('test parse data', (t) => {
 
 
 test('test crossfilter', (t) => {
-    var cf = quant.jsonStat(jdata, {'crossfilter': true});
+    var cf = jsonStat(jdata, {'crossfilter': true});
     var serie = cf.dimension('geo');
     var total = serie.length;
     t.ok(total);
@@ -43,7 +45,7 @@ test('test crossfilter', (t) => {
 
 
 test('test crossfilter clean geo', (t) => {
-    var serie = quant.jsonStat(jdata, {'crossfilter': true, clean: 'geo'});
+    var serie = jsonStat(jdata, {'crossfilter': true, clean: 'geo'});
     var total = serie.length;
     t.ok(total);
     t.equal(serie.fields.length, 3);

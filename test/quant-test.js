@@ -1,9 +1,10 @@
 import {test} from 'tape';
-import {version} from '../';
+
+import {quantVersion} from '../';
 
 
 test('quant version', (t) => {
-    t.ok(version);
-    t.equal(typeof(version), 'string');
+    t.ok(quantVersion);
+    t.equal(typeof(quantVersion), 'string');
     t.end();
 });

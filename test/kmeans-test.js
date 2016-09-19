@@ -1,4 +1,5 @@
 import {test} from 'tape';
+
 import {kmeans} from '../';
 
 

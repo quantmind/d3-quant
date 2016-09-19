@@ -67,6 +67,10 @@
         "serve": {
             "description": "Starts development server",
             "command": ["watch"]
+        },
+        "upload": {
+            "description": "upload compiled distribution"
+            "command": "github:upload"
         }
     }
 }
