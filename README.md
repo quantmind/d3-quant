@@ -9,71 +9,27 @@ data analysis, quantitative finance and more.
 
 ## Installing
 
-If you use [NPM](https://www.npmjs.com/package/d3-quant),
-``npm install d3-quant``. Otherwise, download the
-[latest release](https://github.com/quantmind/d3-quant/releases/latest).
-The released bundle supports AMD, CommonJS, and vanilla environments.
-Create a custom build using [Rollup](https://github.com/rollup/rollup) or
-your preferred bundler.
-You can also load directly from https://assets.quantmind.com:
+If you use [NPM](https://www.npmjs.com/package/d3-quant), ``npm install d3-quant``.
+Otherwise, download the [latest release](https://github.com/quantmind/d3-quant/releases).
+You can also load directly from [giottojs.org](https://giottojs.org),
+as a [standalone library](https://giottojs.org/latest/d3-quant.js) or
+[unpkg](https://unpkg.com/d3-quant/).
+AMD, CommonJS, and vanilla environments are supported. In vanilla, a **d3** global is exported.
+Try [d3-quant](https://runkit.com/npm/d3-quant) in your browser.
 ```html
-<script src="https://assets.quantmind.com/d3-quant/0.1.0/d3-quant.js"></script>
-<script src="https://assets.quantmind.com/d3-quant/0.1.0/d3-quant.min.js"></script>
+<script src="https://d3js.org/d3-array.v1.min.js"></script>
+<script src="https://giottojs.org/latest/d3-quant.min.js"></script>
 ```
-In a vanilla environment, a ``d3_quant`` global is exported.
-Try [d3-quant](https://tonicdev.com/npm/d3-quant) in your browser.
 
 ## API Reference
 
-* [Series]
 * [Random Numbers]
 * [Periods]
 
 
-### Series
-
-The serie object is a wrapper around a data array:
-```javascript
-var s = d3.serie([
-        {date: '2016-03-01', price: 300},
-        {date: '2016-03-02', price: 400},
-        {date: '2016-03-03', price: 350}]).timeField('date');
-
-s.length;               // 3
-s.fields;               // ['date', 'price']
-s.range('price');       // [300, 400]
-s.range('date');        // [ Tue Mar 01 2016 ..., Thu Mar 03 2016 ... ]
-```
-
-<a name="serie_column" href="#serie_column">#</a> <i>serie</i>.<b>column</b>([<i>field</i>])
-
-Extract a column array from the serie. The ``field`` parameter can be either a field name or
-an accessor function.
-```
-s.column('price')       // [300, 400, 350]
-s.column(function (d) {
-    return 2*d['price'];
-});                     // [600, 800, 700]
-```
-
-<a name="serie_fields" href="#serie_fields">#</a> <i>serie</i>.<b>fields</b>
-
-Array of all fields available in the serie.
-
-<a name="serie_hasField" href="#serie_hasField">#</a> <i>serie</i>.<b>hasField</b>([<i>field</i>])
-
-Return true if ``field`` is available in the serie.
-
-<a name="serie_range" href="#serie_range">#</a> <i>serie</i>.<b>range</b>([<i>field</i>])
-
-Return the extent of ``field``. In the event the field does not exist or the serie is empty
-``[undefined, undefined]`` is returned.
-
-
-
 ### Random Numbers
 
-Two random number generators for multiple dimension
+Two random number generators for multiple dimension.
 
 
 ### Periods
