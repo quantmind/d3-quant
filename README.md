@@ -1,10 +1,8 @@
 # d3-quant
 
-[![Build Status](https://travis-ci.org/quantmind/d3-quant.svg?branch=master)](https://travis-ci.org/quantmind/d3-quant)
+[![CircleCI](https://circleci.com/gh/quantmind/d3-quant.svg?style=svg)](https://circleci.com/gh/quantmind/d3-quant)
 [![Dependency Status](https://david-dm.org/quantmind/d3-quant.svg)](https://david-dm.org/quantmind/d3-quant)
 [![devDependency Status](https://david-dm.org/quantmind/d3-quant/dev-status.svg)](https://david-dm.org/quantmind/d3-quant#info=devDependencies)
-
-**PRE ALPHA - DONT USE IT**
 
 This is a [d3 plugin](https://bost.ocks.org/mike/d3-plugin/) for quantitative
 data analysis, quantitative finance and more.
