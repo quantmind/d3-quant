@@ -1,4 +1,3 @@
-
 export function euclidean (v1, v2) {
     var total = 0;
     for (let i = 0; i < v1.length; i++)

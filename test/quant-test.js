@@ -1,6 +1,6 @@
 import {test} from 'tape';
 
-import {quantVersion} from '../';
+import {quantVersion} from '../index';
 
 
 test('quant version', (t) => {

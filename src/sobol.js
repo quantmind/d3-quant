@@ -1,6 +1,4 @@
-import {self} from './utils';
-
-const
+var
     BITS = 52,
     SCALE = 2 << 51,
     COEFFICIENTS = [
@@ -16,96 +14,84 @@ const
         '10      5       7       1 1 7 11 1'
     ];
 
-class Sobol {
 
-    constructor (dimension) {
-        self.set(this, new SobolImpl(dimension));
+export default function sobol(dim) {
+    return new Sobol(dim);
+}
+
+
+function Sobol(dimension) {
+    if (dimension < 1 || dimension > COEFFICIENTS.length) throw new Error("Out of range dimension");
+    var tmp = [],
+        direction = [],
+        zero = [],
+        x = [],
+        lines = COEFFICIENTS,
+        count = 0,
+        i;
+
+    Object.defineProperties(this, {
+        dimension: {
+            get () {
+                return dimension;
+            }
+        },
+        count: {
+            get () {
+                return count;
+            }
+        }
+    });
+
+    this.next = next;
+
+    for (i = 0; i <= BITS; i++) tmp.push(0);
+    for (i = 0; i < dimension; i++) {
+        direction[i] = tmp.slice();
+        x[i] = 0;
+        zero[i] = 0;
     }
 
-    get dimension () {
-        return self.get(this).dimension;
+    for (i = 1; i <= BITS; i++) direction[0][i] = 1 << (BITS - i);
+    for (var d = 1; d < dimension; d++) {
+        var cells = lines[d].split(/\s+/);
+        var s = +cells[1];
+        var a = +cells[2];
+        var m = [0];
+        for (i = 0; i < s; i++) m.push(+cells[3 + i]);
+        for (i = 1; i <= s; i++) direction[d][i] = m[i] << (BITS - i);
+        for (i = s + 1; i <= BITS; i++) {
+            direction[d][i] = direction[d][i - s] ^ (direction[d][i - s] >> s);
+            for (var k = 1; k <= s - 1; k++)
+                direction[d][i] ^= ((a >> (s - 1 - k)) & 1) * direction[d][i - k];
+        }
     }
 
-    get count () {
-        return self.get(this).count;
+    function next () {
+        if (count === 0) {
+            count++;
+            return zero.slice();
+        }
+        var v = [],
+            c = 1,
+            value = count - 1;
+        while ((value & 1) == 1) {
+            value >>= 1;
+            c++;
+        }
+        for (i = 0; i < dimension; i++) {
+            x[i] ^= direction[i][c];
+            v[i] = x[i] / SCALE;
+        }
+        count++;
+        return v;
     }
+}
 
-    next () {
-        return self.get(this).next();
-    }
-
+Sobol.prototype = {
     generate (num) {
         var draws = [];
         for (let i=0; i<num; ++i) draws.push(this.next());
         return draws;
     }
-}
-
-let i;
-
-
-class SobolImpl {
-
-    constructor(dimension) {
-        if (dimension < 1 || dimension > COEFFICIENTS.length) throw new Error("Out of range dimension");
-        this.dimension = dimension;
-        this.count = 0;
-        this.direction = [];
-        this.x = [];
-        this.zero = [];
-
-        let tmp = [],
-            direction = this.direction,
-            zero = this.zero,
-            x = this.x,
-            lines = COEFFICIENTS;
-
-        for (i = 0; i <= BITS; i++) tmp.push(0);
-        for (i = 0; i < this.dimension; i++) {
-            direction[i] = tmp.slice();
-            x[i] = 0;
-            zero[i] = 0;
-        }
-
-        for (i = 1; i <= BITS; i++) direction[0][i] = 1 << (BITS - i);
-        for (var d = 1; d < this.dimension; d++) {
-            var cells = lines[d].split(/\s+/);
-            var s = +cells[1];
-            var a = +cells[2];
-            var m = [0];
-            for (i = 0; i < s; i++) m.push(+cells[3 + i]);
-            for (i = 1; i <= s; i++) direction[d][i] = m[i] << (BITS - i);
-            for (i = s + 1; i <= BITS; i++) {
-                direction[d][i] = direction[d][i - s] ^ (direction[d][i - s] >> s);
-                for (var k = 1; k <= s - 1; k++)
-                    direction[d][i] ^= ((a >> (s - 1 - k)) & 1) * direction[d][i - k];
-            }
-        }
-    }
-
-    next() {
-        if (this.count === 0) {
-            this.count++;
-            return this.zero.slice();
-        }
-        let v = [];
-        let c = 1;
-        let value = this.count - 1;
-        while ((value & 1) == 1) {
-            value >>= 1;
-            c++;
-        }
-        for (i = 0; i < this.dimension; i++) {
-            this.x[i] ^= this.direction[i][c];
-            v[i] = this.x[i] / SCALE;
-        }
-        this.count++;
-        return v;
-    }
-}
-
-function sobol(dim) {
-    return new Sobol(dim);
-}
-
-export default sobol;
+};

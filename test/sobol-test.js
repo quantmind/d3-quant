@@ -1,5 +1,5 @@
 import {test} from 'tape';
-import {sobol, round} from '../';
+import {sobol, round} from '../index';
 
 
 test('test sobol constructor', (t) => {

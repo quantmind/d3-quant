@@ -1,6 +1,6 @@
 import {test} from 'tape';
 
-import {period} from '../';
+import {period} from '../index';
 
 
 

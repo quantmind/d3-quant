@@ -1,37 +1,51 @@
-const M = {
+var M = {
     'Y': 'Years',
     'M': 'Months',
     'W': 'Weeks',
     'D': 'Days'
 };
 
+export default function period (pstr) {
+    if (pstr instanceof period) return pstr;
+    return new Period().addTenure(pstr);
+}
 
-class Period {
 
-    constructor (months, days) {
-        this.$months = months || 0;
-        this.$days = days || 0;
-    }
+function Period () {
+    this.$months = 0;
+    this.$days = 0;
 
-    get years () {
-        return Math.trunc(this.$months/12);
-    }
+    Object.defineProperties(this, {
+        years: {
+            get () {
+                return Math.trunc(this.$months / 12);
+            }
+        },
+        months: {
+            get () {
+                return this.$months % 12;
+            }
+        },
+        weeks: {
+            get () {
+                return Math.trunc(this.$days / 7);
+            }
+        },
+        days: {
+            get () {
+                return this.$days % 7;
+            }
+        },
+        totalDays: {
+            get () {
+                return 30 * this.$months + this.$days;
+            }
+        }
+    });
+}
 
-    get months () {
-        return this.$months % 12;
-    }
 
-    get weeks () {
-        return Math.trunc(this.$days/7);
-    }
-
-    get days () {
-        return this.$days % 7;
-    }
-
-    get totalDays () {
-        return 30 * this.$months + this.$days;
-    }
+Period.prototype = period.prototype = {
 
     addTenure (pstr) {
         if (pstr instanceof period) {
@@ -65,33 +79,21 @@ class Period {
             }
         }
         return this;
-    }
+    },
 
     addDays (days) {
         this.$days += days;
-    }
+    },
 
     addWeeks (weeks) {
         this.$days += 7*weeks;
-    }
+    },
 
     addMonths (months) {
         this.$months += months;
-    }
+    },
 
     addYears (years) {
         this.$months += 12*years;
     }
-
-}
-
-
-function period (pstr) {
-    if (pstr instanceof period) return pstr;
-    return new Period().addTenure(pstr);
-}
-
-period.prototype = Period.prototype;
-
-
-export default period;
+};

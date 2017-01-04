@@ -1,5 +1,5 @@
 {
-    "version": "0.3.0",
+    "version": "0.4.0",
     "name": "d3-quant",
     "description": "D3 library for quantitative analytics",
     "homepage": "https://github.com/quantmind/d3-quant",
@@ -9,42 +9,44 @@
     },
     "keywords": [
         "d3",
+        "d3-module",
         "math"
     ],
     "license": "BSD-3-Clause",
     "author": {
-        "name": "Luca Sbardella",
-        "url": "http://lucasbardella.com"
+        "name": "quantmind.com",
+        "email": "message@quantmind.com"
     },
-    "main": "dist/d3-quant.js",
+    "main": "build/d3-quant.js",
     "jsnext:main": "index",
     "dependencies": {
-        "d3-let": "0.2",
-        "d3-array": "1.0",
-        "d3-collection": "1.0",
-        "d3-random": "1.0"
+        "d3-array": "1.0"
     },
     "devDependencies": {
         "babelify": "7.3",
-        "babel-preset-es2015-rollup": "1.2",
+        "babel-preset-es2015-rollup": "3.0",
         "babel-tape-runner": "2.0",
-        "browserify": "13.1",
+        "browserify": "13.3",
         "covert": "1.1",
         "crossfilter": "1.3",
-        "eslint": "3.5",
+        "eslint": "3.12",
         "faucet": "0.0",
         "package-preamble": "0.0",
-        "rollup": "0.36",
-        "rollup-plugin-babel": "2.6",
-        "rollup-plugin-json": "2.0",
+        "publish": "0.6",
+        "rollup": "0.40",
+        "rollup-plugin-babel": "2.7",
+        "rollup-plugin-json": "2.1",
         "tape": "4.6",
         "uglify-js": "2.7"
     },
     "scripts": {
-        "pretest": "rm -rf dist && mkdir dist && rollup -c --banner \"$(preamble)\"",
-        "test": "eslint index.js src test && babel-tape-runner `find test -name '*-test.js'` | faucet",
-        "prepublish": "npm run test && uglifyjs --preamble \"$(preamble)\" dist/d3-quant.js -c -m -o dist/d3-quant.min.js",
-        "postpublish": "VERSION=`node -e 'console.log(require(\"./package.json\").version)'`; git push && git tag -am \"Release $VERSION.\" v${VERSION} && git push --tags && zip -j dist/d3-quant.zip -- LICENSE README.md dist/d3-quant.js dist/d3-quant.min.js"
+        "test": "eslint index.js rollup.config.js src test && babel-tape-runner `find test -name '*-test.js'` | faucet",
+        "rollup": "rollup -c --banner \"$(preamble)\"",
+        "minify": "uglifyjs --preamble \"$(preamble)\" build/d3-quant.js -c -m -o build/d3-quant.min.js",
+        "build": "npm run-script rollup && npm run-script minify",
+        "prepublish": "npm run-script rollup && npm run-script minify",
+        "postpublish": "VERSION=`node -e 'console.log(require(\"./package.json\").version)'`; git push && git tag -am \"Release $VERSION.\" v${VERSION} && git push --tags && mkdir -p ../giottojs.org/latest && mkdir -p ../giottojs.org/d3-quant/${VERSION} && cp build/* ../giottojs.org/d3-quant/${VERSION}/ && cp build/* ../giottojs.org/latest/ && cd ../giottojs.org && git add d3-quant/${VERSION} latest && git commit -a -m \"d3-quant ${VERSION}\" && git push",
+        "release": "publish"
     },
     "babel": {
         "presets": ["es2015"]

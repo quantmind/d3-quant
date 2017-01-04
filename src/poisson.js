@@ -1,5 +1,3 @@
-
-
 // Poisson disk sampler
 // Based on https://www.jasondavies.com/poisson-disc/
 export default function (width, height, radius) {

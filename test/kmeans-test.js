@@ -1,6 +1,6 @@
 import {test} from 'tape';
 
-import {kmeans} from '../';
+import {kmeans} from '../index';
 
 
 test('test kmeans constructor', (t) => {
@@ -9,6 +9,7 @@ test('test kmeans constructor', (t) => {
     t.ok(km.distance());
     t.end();
 });
+
 
 test('test euclidean distance', (t) => {
     var km = kmeans(),
