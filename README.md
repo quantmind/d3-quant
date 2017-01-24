@@ -32,10 +32,28 @@ Try [d3-quant](https://runkit.com/npm/d3-quant) in your browser.
 
 A binary tree data-structure which implements the [red-black](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)
 self balancing algorithm.
-```
+```javascript
 var tree = d3.binaryTree();
 tree.insert(0.5);
-tree.size()     \\  1
+tree.size()         \\  1
+tree.maxDepth()     \\  0
+tree.insert(0.8);
+tree.size()         \\  2
+tree.maxDepth()     \\  1
+```
+
+Traversing the tree can be done with in order or root to leaf.
+
+**Root to leaf traversal**
+```javascript
+tree.traverse(function (node) {
+}); 
+```
+
+**In order traversal**
+```javascript
+tree.traverseInOrder(function (node) {
+}); 
 ```
 
 ### Random Numbers
@@ -61,7 +79,7 @@ p.weeks;        // 1
 p.days;         // 2
 ```
 
-[Series]: #series
+[Binary Tree]: #binary-tree
 [Random Numbers]: #random-numbers
 [Periods]: #periods
 
