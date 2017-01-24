@@ -23,9 +23,20 @@ Try [d3-quant](https://runkit.com/npm/d3-quant) in your browser.
 
 ## API Reference
 
+* [Binary Tree]
 * [Random Numbers]
 * [Periods]
 
+
+### Binary Tree
+
+A binary tree data-structure which implements the [red-black](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)
+self balancing algorithm.
+```
+var tree = d3.binaryTree();
+tree.insert(0.5);
+tree.size()     \\  1
+```
 
 ### Random Numbers
 
