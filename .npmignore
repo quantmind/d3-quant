@@ -1,8 +1,7 @@
 .idea
 circle.yml
-*.log
-agile.json
-play.py
+rollup.config.js
+.eslintrc
+yarn.lock
 coverage/
-dist/*.zip
 test/

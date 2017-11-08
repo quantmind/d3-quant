@@ -1,5 +1,7 @@
 # d3-quant
 
+[![NPM](https://badge.fury.io/js/d3-quant.svg)](https://www.npmjs.com/package/d3-quant)
+
 [![CircleCI](https://circleci.com/gh/quantmind/d3-quant.svg?style=svg)](https://circleci.com/gh/quantmind/d3-quant)
 [![Dependency Status](https://david-dm.org/quantmind/d3-quant.svg)](https://david-dm.org/quantmind/d3-quant)
 [![devDependency Status](https://david-dm.org/quantmind/d3-quant/dev-status.svg)](https://david-dm.org/quantmind/d3-quant#info=devDependencies)
@@ -47,13 +49,13 @@ Traversing the tree can be done with in order or root to leaf.
 **Root to leaf traversal**
 ```javascript
 tree.traverse(function (node) {
-}); 
+});
 ```
 
 **In order traversal**
 ```javascript
 tree.traverseInOrder(function (node) {
-}); 
+});
 ```
 
 ### Random Numbers
@@ -82,4 +84,3 @@ p.days;         // 2
 [Binary Tree]: #binary-tree
 [Random Numbers]: #random-numbers
 [Periods]: #periods
-
