@@ -1,5 +1,5 @@
 {
-    "version": "0.4.2",
+    "version": "0.4.3",
     "name": "d3-quant",
     "description": "D3 library for quantitative analytics",
     "homepage": "https://github.com/quantmind/d3-quant",
@@ -20,24 +20,28 @@
     "main": "build/d3-quant.js",
     "jsnext:main": "index",
     "dependencies": {
-        "d3-array": "1.0"
+        "d3-array": "1.2",
+        "d3-let": "0.3",
+        "d3-random": "1.1"
     },
     "devDependencies": {
-        "babelify": "7.3",
+        "babel-core": "6.26",
+        "babel-plugin-external-helpers": "6.22",
+        "babel-preset-env": "1.6",
         "babel-preset-es2015-rollup": "3.0",
-        "babel-tape-runner": "2.0",
-        "browserify": "13.3",
+        "babel-tape-runner": "2",
+        "babelify": "8",
         "covert": "1.1",
         "crossfilter": "1.3",
-        "eslint": "3.12",
+        "eslint": "4.10",
         "faucet": "0.0",
-        "package-preamble": "0.0",
+        "package-preamble": "0.1",
         "publish": "0.6",
-        "rollup": "0.40",
-        "rollup-plugin-babel": "2.7",
-        "rollup-plugin-json": "2.1",
-        "tape": "4.6",
-        "uglify-js": "2.7"
+        "rollup": "0.51",
+        "rollup-plugin-babel": "3.0",
+        "rollup-plugin-json": "2.3",
+        "tape": "4.8",
+        "uglify-js": "3.1"
     },
     "scripts": {
         "test": "eslint index.js rollup.config.js src test && babel-tape-runner `find test -name '*-test.js'` | faucet",
@@ -49,6 +53,8 @@
         "release": "publish"
     },
     "babel": {
-        "presets": ["es2015"]
+        "presets": [
+            "es2015"
+        ]
     }
 }

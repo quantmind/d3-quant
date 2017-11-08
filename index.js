@@ -4,4 +4,6 @@ export {default as poisson} from './src/poisson';
 export {default as period} from './src/period';
 export {default as round} from './src/round';
 export {default as binaryTree} from './src/btree';
+export {default as amortisation} from "./src/amortise";
+export {default as randomPath} from './src/randompath';
 export {version as quantVersion} from './package.json';
