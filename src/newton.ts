@@ -4,7 +4,7 @@ const defaults = {
   maxIterations: 20,
 };
 
-export default (f, fprime, guess, options) => {
+export default (f: any, fprime: any, guess: number, options: any) => {
   options = options || {};
   let tolerance = options.tolerance || defaults.tolerance,
     epsilon = options.epsilon || defaults.epsilon,

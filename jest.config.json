@@ -2,7 +2,7 @@
   "preset": "ts-jest",
   "rootDir": ".",
   "automock": false,
-  "testEnvironment": "node",
+  "testEnvironment": "jsdom",
   "testMatch": ["<rootDir>/tests/*.test.js"],
   "coverageReporters": ["json", "html", "lcov", "text", "text-summary"],
   "coveragePathIgnorePatterns": ["node_modules", "dist", ".storybook"],
