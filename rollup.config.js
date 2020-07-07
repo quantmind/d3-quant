@@ -1,21 +1,18 @@
-import json from 'rollup-plugin-json';
-import babel from 'rollup-plugin-babel';
-
+const globals = {
+  "d3-array": "d3",
+  "d3-random": "d3",
+};
+const external = Object.keys(globals);
 
 export default {
-    entry: 'index.js',
-    format: 'umd',
-    moduleName: 'd3',
-    moduleId: 'd3-quant',
-    plugins: [
-        json(),
-        babel({
-            babelrc: false,
-            presets: ['es2015-rollup']
-        })
-    ],
-    dest: 'build/d3-quant.js',
-    globals: {
-        'd3-array': 'd3'
-    }
+  input: {
+    entry: "src/index.js",
+  },
+  output: {
+    dest: "build/d3-quant.js",
+    format: "umd",
+    globals,
+    name: "d3",
+  },
+  external,
 };
