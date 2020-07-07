@@ -1,55 +1,62 @@
-export default function btree() {
+export default () => {
   return new Btree();
-}
+};
 
-function Btree() {
-  this.root = null;
-}
+class Btree {
+  root: any;
 
-function Node(node) {
-  this.score = typeof node == "number" ? node : node.score;
-  this.value = node.value;
-  this.parent = null;
-  this.left = null;
-  this.right = null;
-  this.red = false;
+  constructor() {
+    this.root = null;
+  }
 
-  Object.defineProperty(this, "root", {
-    get: function () {
-      return this.parent ? this.parent.root : this;
-    },
-  });
-}
-
-Btree.prototype = btree.prototype = {
   insert(node, callback) {
     if (!this.root) {
       this.root = new Node(node);
       if (callback) callback(this.root);
     } else this.root = this.root.insert(node, callback);
-  },
+  }
   size() {
     return this.root ? this.root.size() : 0;
-  },
+  }
   maxDepth() {
     return this.root ? this.root.maxDepth() : 0;
-  },
+  }
   traverse(callback) {
     this.root ? this.root.traverse(callback) : null;
-  },
+  }
   traverseInOrder(callback) {
     this.root ? this.root.traverseInOrder(callback) : null;
-  },
+  }
   nodes() {
     return this.root ? this.root.nodes() : [];
-  },
+  }
   links() {
     return this.root ? this.root.links() : [];
-  },
-};
+  }
+}
 
-Node.prototype = {
-  insert: function (node, callback) {
+class Node {
+  score: any;
+  value: any;
+  parent: Node || undefined;
+  left: Node || undefined;
+  right: Node || undefined;
+  red: boolean;
+
+  constructor(node: any) {
+    this.score = typeof node == "number" ? node : node.score;
+    this.value = node.value;
+    this.parent = null;
+    this.left = null;
+    this.right = null;
+    this.red = false;
+  }
+
+  get root() {
+    return this.parent ? this.parent.root : this;
+  }
+
+  insert(node, callback) {
     var score = typeof node == "number" ? node : node.score,
       nd;
 
@@ -65,7 +72,7 @@ Node.prototype = {
     var root = rb_insert_fix(nd);
     if (callback) callback(nd);
     return root;
-  },
+  }
 
   size() {
     var count = 0;
@@ -73,30 +80,30 @@ Node.prototype = {
       count++;
     });
     return count;
-  },
+  }
 
   depth() {
     if (this.parent) return this.parent.depth() + 1;
     else return 0;
-  },
+  }
 
   maxDepth() {
     var dl = this.left ? this.left.maxDepth() + 1 : 0,
       dr = this.right ? this.right.maxDepth() + 1 : 0;
     return Math.max(dl, dr);
-  },
+  }
 
   traverse(callback) {
     callback(this);
     if (this.left) this.left.traverse(callback);
     if (this.right) this.right.traverse(callback);
-  },
+  }
 
   traverseInOrder(callback) {
     if (this.left) this.left.traverseInOrder(callback);
     callback(this);
     if (this.right) this.right.traverseInOrder(callback);
-  },
+  }
 
   nodes() {
     var nodes = [];
@@ -104,7 +111,7 @@ Node.prototype = {
       nodes.push(node);
     });
     return nodes;
-  },
+  }
 
   links() {
     var links = [];
@@ -116,8 +123,8 @@ Node.prototype = {
         });
     });
     return links;
-  },
-};
+  }
+}
 
 function rb_insert_fix(z) {
   var y;
