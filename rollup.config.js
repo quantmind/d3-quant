@@ -5,14 +5,13 @@ const globals = {
 const external = Object.keys(globals);
 
 export default {
-  input: {
-    entry: "src/index.js",
-  },
+  input: "src/index.js",
   output: {
-    dest: "build/d3-quant.js",
+    file: "dist/d3-quant.js",
     format: "umd",
-    globals,
     name: "d3",
+    extend: true,
+    globals,
   },
   external,
 };
