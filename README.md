@@ -1,6 +1,7 @@
 # d3-quant
 
 [![build](https://github.com/quantmind/d3-quant/workflows/build/badge.svg)](https://github.com/quantmind/d3-quant/actions?query=workflow%3Abuild)
+[![codecov](https://codecov.io/gh/quantmind/d3-quant/branch/master/graph/badge.svg)](https://codecov.io/gh/quantmind/d3-quant)
 [![NPM](https://badge.fury.io/js/d3-quant.svg)](https://www.npmjs.com/package/d3-quant)
 
 This is a [d3 plugin](https://bost.ocks.org/mike/d3-plugin/) for quantitative
@@ -12,13 +13,13 @@ yarn add d3-quant
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Reference**
 
 - [Binary Tree](#binary-tree)
 - [Sobol low-discrepancy sequence](#sobol-low-discrepancy-sequence)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 
 ## Binary Tree
 
