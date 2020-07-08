@@ -1,5 +1,6 @@
 # d3-quant
 
+![build](https://github.com/quantmind/d3-quant/workflows/build/badge.svg)
 [![NPM](https://badge.fury.io/js/d3-quant.svg)](https://www.npmjs.com/package/d3-quant)
 
 This is a [d3 plugin](https://bost.ocks.org/mike/d3-plugin/) for quantitative
