@@ -3,7 +3,7 @@
   "rootDir": ".",
   "automock": false,
   "testEnvironment": "jsdom",
-  "testMatch": ["<rootDir>/tests/*.test.js"],
+  "testMatch": ["<rootDir>/tests/*.test.ts"],
   "coverageReporters": ["json", "html", "lcov", "text", "text-summary"],
   "coveragePathIgnorePatterns": ["node_modules", "dist", ".storybook"],
   "coverageThreshold": {

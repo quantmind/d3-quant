@@ -1,4 +1,5 @@
 import typescript from "rollup-plugin-typescript2";
+import pkg from "./package.json";
 
 const plugins = [
   typescript({
@@ -12,15 +13,35 @@ const globals = {
 };
 const external = Object.keys(globals);
 
-export default {
-  input: "src/index.ts",
-  output: {
-    file: "dist/d3-quant.js",
-    format: "umd",
-    name: "d3",
-    extend: true,
-    globals,
+export default [
+  {
+    input: "src/index.ts",
+    output: {
+      file: pkg.main,
+      format: "umd",
+      name: "d3",
+      extend: true,
+      globals,
+    },
+    external,
+    plugins,
+    watch: {
+      clearScreen: false,
+    },
   },
-  external,
-  plugins,
-};
+  {
+    input: "src/index.ts",
+    output: {
+      file: pkg.module,
+      format: "esm",
+      name: "d3",
+      extend: true,
+      globals,
+    },
+    external,
+    plugins,
+    watch: {
+      clearScreen: false,
+    },
+  },
+];

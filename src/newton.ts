@@ -6,10 +6,10 @@ const defaults = {
 
 export default (f: any, fprime: any, guess: number, options: any) => {
   options = options || {};
-  let tolerance = options.tolerance || defaults.tolerance,
+  const tolerance = options.tolerance || defaults.tolerance,
     epsilon = options.epsilon || defaults.epsilon,
-    maxIterations = options.maxIterations || defaults.maxIterations,
-    result = guess,
+    maxIterations = options.maxIterations || defaults.maxIterations;
+  let result = guess,
     denominator;
 
   for (let i = 0; i < maxIterations; ++i) {

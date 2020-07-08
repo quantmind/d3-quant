@@ -1,7 +1,6 @@
 .idea
-circle.yml
 rollup.config.js
 .eslintrc
 yarn.lock
 coverage/
-test/
+tests/

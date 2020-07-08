@@ -1,22 +1,20 @@
 import { range } from "d3-array";
 import { randomNormal } from "d3-random";
 
-const defaults = {
-  sigma: 0.1,
-  drift: 0,
-};
+interface PathInputs {
+  sigma: number;
+  drift: number;
+}
 
-export default function (size, options) {
-  options = { ...defaults, ...options };
-  var t = range(0, +size, 1),
-    S = options.sigma,
-    drift = options.drift,
+export default function (size: number, options?: PathInputs) {
+  const { sigma = 0.1, drift = 0 } = options || {};
+  const t = range(0, +size, 1),
     data = [{ x: 0, y: 0 }],
-    norm = randomNormal(0, 1),
-    dx;
+    norm = randomNormal(0, 1);
+  let dx: number;
 
-  for (var i = 1; i < t.length; i++) {
-    dx = drift + S * norm();
+  for (let i = 1; i < t.length; i++) {
+    dx = drift + sigma * norm();
     data[i] = {
       x: i,
       y: data[i - 1].y + dx,

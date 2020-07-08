@@ -3,41 +3,41 @@ import * as distances from "./distances";
 
 //  K-means clustering
 export default () => {
-  var maxIters = 300,
-    distance,
-    centroids;
+  let maxIters = 300;
+  let distance: any;
+  let centroids: any;
 
-  var km = {
-    centroids(x) {
+  const km = {
+    centroids(x: any) {
       if (!arguments.length) return centroids;
       centroids = x;
       return km;
     },
 
-    maxIters(x) {
-      if (!arguments.length) return maxIters;
-      maxIters = +x;
+    maxIters(...x: number[]) {
+      if (!x.length) return maxIters;
+      maxIters = +x[0];
       return km;
     },
 
-    distance(_) {
-      if (!arguments.length) return distance;
-      _ = _ || "euclidean";
-      if (typeof _ == "string") _ = distances[_];
-      distance = _;
+    distance(...d: any[]) {
+      if (!d.length) return distance;
+      let di: any = d[0] || "euclidean";
+      if (typeof di == "string") di = (distances as any)[di];
+      distance = di;
       return km;
     },
 
     // create a set of random centroids from a set of points
-    randomCentroids(points, K) {
-      var means = points.slice(0); // copy
+    randomCentroids(points: any, K: number) {
+      const means = points.slice(0); // copy
       means.sort(function () {
         return Math.round(Math.random()) - 0.5;
       });
       return means.slice(0, K);
     },
 
-    classify(point) {
+    classify(point: any) {
       let min = Infinity,
         index = 0,
         i,
@@ -53,10 +53,10 @@ export default () => {
       return index;
     },
 
-    cluster(points, callback) {
-      var iterations = 0,
+    cluster(points: any, callback: any) {
+      const N = points.length;
+      let iterations = 0,
         movement = true,
-        N = points.length,
         newCentroids,
         n,
         k;
@@ -66,7 +66,7 @@ export default () => {
         km.centroids(centroids);
       }
 
-      let K = centroids.length,
+      const K = centroids.length,
         clusters = new Array(K);
 
       if (N < K)

@@ -8,8 +8,9 @@
     "allowJs": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "declaration": true
+    "declaration": true,
+    "outDir": "dist"
   },
-  "include": ["**/*.js"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src/*.ts"],
+  "exclude": ["node_modules", "dist", "esm", "coverage"]
 }
