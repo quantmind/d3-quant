@@ -14,10 +14,10 @@ yarn add d3-quant
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-**Reference**
 
 - [Binary Tree](#binary-tree)
 - [Sobol low-discrepancy sequence](#sobol-low-discrepancy-sequence)
+- [Make a Release](#make-a-release)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -59,3 +59,13 @@ const sobol = d3.sobol(5);
 sobol.next()  \\ [ 0, 0, 0, 0, 0 ]
 sobol.next()  \\ [ 0.5, 0.5, 0.5, 0.5, 0.5 ]
 ```
+
+## Make a Release
+
+For maintainers, to make a new realase, bump the version and issue this commit message
+
+```
+Relase x.y.z
+```
+
+replacing `x.t.z` with the correct version matching the package.json.
