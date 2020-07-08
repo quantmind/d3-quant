@@ -6,6 +6,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      CODECOV_TOKEN: 67b2e434-10b3-4187-b97d-0ec8d7b59d80
 
     strategy:
       matrix:
@@ -22,6 +24,7 @@ jobs:
     - run: yarn build
     - run: yarn lint
     - run: yarn test
+    - run: bash <(curl -s https://codecov.io/bash)
 
   publish:
     runs-on: ubuntu-latest
