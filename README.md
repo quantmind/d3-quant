@@ -1,6 +1,6 @@
 # d3-quant
 
-![build](https://github.com/quantmind/d3-quant/workflows/build/badge.svg)
+[![build](https://github.com/quantmind/d3-quant/workflows/build/badge.svg)](https://github.com/quantmind/d3-quant/actions?query=workflow%3Abuild)
 [![NPM](https://badge.fury.io/js/d3-quant.svg)](https://www.npmjs.com/package/d3-quant)
 
 This is a [d3 plugin](https://bost.ocks.org/mike/d3-plugin/) for quantitative
@@ -10,13 +10,17 @@ data analysis, quantitative finance and more.
 yarn add d3-quant
 ```
 
-## API Reference
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Reference**
 
-- [Binary Tree]
-- [Random Numbers]
-- [Periods]
+- [Binary Tree](#binary-tree)
+- [Sobol low-discrepancy sequence](#sobol-low-discrepancy-sequence)
 
-### Binary Tree
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+
+## Binary Tree
 
 A binary tree data-structure which implements the [red-black](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)
 self balancing algorithm.
@@ -24,11 +28,11 @@ self balancing algorithm.
 ```javascript
 var tree = d3.binaryTree();
 tree.insert(0.5);
-tree.size()         \\  1
-tree.maxDepth()     \\  0
+tree.size           \\  1
+tree.maxDepth       \\  0
 tree.insert(0.8);
-tree.size()         \\  2
-tree.maxDepth()     \\  1
+tree.size           \\  2
+tree.maxDepth       \\  1
 ```
 
 Traversing the tree can be done with in order or root to leaf.
@@ -45,29 +49,12 @@ tree.traverse(function (node) {});
 tree.traverseInOrder(function (node) {});
 ```
 
-### Random Numbers
+## Sobol low-discrepancy sequence
 
-Two random number generators for multiple dimension.
-
-### Periods
-
-Manipulate periods:
+Generate a [Sobol sequence](https://en.wikipedia.org/wiki/Sobol_sequence) for N dimensions.
 
 ```javascript
-var p = d3.period("5y");
-p.years; // 5
-p.months; // 0
-var p = d3.period("5y2m");
-p.years; // 5
-p.months; // 2
-p.days; // 0
-var p = d3.period("5y2m9d");
-p.years; // 5
-p.months; // 2
-p.weeks; // 1
-p.days; // 2
+const sobol = d3.sobol(5);
+sobol.next()  \\ [ 0, 0, 0, 0, 0 ]
+sobol.next()  \\ [ 0.5, 0.5, 0.5, 0.5, 0.5 ]
 ```
-
-[binary tree]: #binary-tree
-[random numbers]: #random-numbers
-[periods]: #periods
