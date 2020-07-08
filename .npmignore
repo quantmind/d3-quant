@@ -1,6 +1,11 @@
 .idea
 rollup.config.js
-.eslintrc
+.eslintignore
+.eslintrc.js
 yarn.lock
+Makefile
+jest.config.json
+.github/
+node_modules/
 coverage/
 tests/
