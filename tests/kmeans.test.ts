@@ -3,7 +3,9 @@ import { kmeans } from "../src";
 test("test kmeans constructor", () => {
   const km = kmeans();
   expect(km.maxIters()).toBe(300);
+  expect(km.maxIters(400).maxIters()).toBe(400);
   expect(km.distance()).toBeTruthy();
+  expect(km.centroids()).toBeUndefined();
 });
 
 test("test euclidean distance", () => {
