@@ -107,10 +107,10 @@ class Node implements BtreeNode {
     let nd: Node;
 
     if (score > this.score) {
-      if (this.right) return this.right.insert(node);
+      if (this.right) return this.right.insert(node, callback);
       else this.right = nd = new Node(score);
     } else {
-      if (this.left) return this.left.insert(node);
+      if (this.left) return this.left.insert(node, callback);
       else this.left = nd = new Node(score);
     }
     nd.red = true;

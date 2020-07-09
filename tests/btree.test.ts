@@ -1,4 +1,5 @@
-import { binaryTree } from "../src";
+import { range } from "d3-array";
+import { binaryTree, BtreeNode } from "../src";
 
 describe("Btree", () => {
   test("test btree constructor", () => {
@@ -27,5 +28,19 @@ describe("Btree", () => {
 
     const nodes = tree.nodes();
     expect(nodes.length).toBe(3);
+  });
+
+  test("test btree insert callback", () => {
+    const tree = binaryTree();
+    range(50).forEach(() => {
+      const value = Math.random();
+      let nd: BtreeNode | undefined;
+      tree.insert(value, (n: BtreeNode) => {
+        nd = n;
+      });
+      expect(nd?.score).toBe(value);
+    });
+    tree.insert(0.5);
+    tree.insert(0.6);
   });
 });
